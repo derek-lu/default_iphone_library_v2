@@ -1,0 +1,533 @@
+body {
+	font-family: Helvetica Neue;
+	background-color: #E9E9E9;
+	overflow: hidden;
+	margin: 0px;
+    padding: 0px;
+	height: 414px;
+}
+
+.offline {
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+/* The black header at the top. */
+.header {
+	width: 320px;
+	height: 40px;
+	background-color: #f8f8f8;
+	z-index: 9;
+	padding: 5px 0px 0px 0px;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+#title {
+    text-align: center;
+    font-size: 16px;
+    width: 250px;
+    display: block;
+    color: #000000;
+    position: absolute;
+    left: 35px;
+    top: 12px;
+}
+
+#spinner-title {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+#title-image {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    position: relative;
+    top: -5;
+}
+
+#banner {
+    background: url("images/entitlement_banner.png") no-repeat;
+    background-size: 320px 66px;
+    width: 320px;
+    height: 66px;
+    display: block;
+}
+
+.text-link {
+    -webkit-user-select: none;
+    cursor: default;
+    font-size: 14px;
+}
+
+.text-link {
+    color: #00A9DF;
+}
+
+.text-link:active {
+    color: rgba(0,169,223, .5);
+}
+
+#settings-button {
+	background: url("images/settings_icon.png") no-repeat;
+	width: 50px;
+    height: 50px;
+    background-size: 25px 25px;
+    position: absolute;
+    top: 10px;
+    right: -3px;
+}
+
+#settings-button:active {
+    opacity: .5;
+}
+
+/* Container which holds the view that flips when the settings view is toggled. */
+#content-container {
+	width: 320px;
+	height: 414px;
+	-webkit-perspective: 1000;
+}
+
+#content-front, #content-back {
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+}
+
+#content-container #content {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: 0.6s;
+	position: absolute;
+	width: 320px;
+	height: 414px;
+}
+
+#content-back {
+	width: 320px;
+	-webkit-transform: rotateY(180deg);
+    background-color: #E9E9E9;
+}
+
+/* The "Done" buttons to close a view. */
+#settings-done-button, #login-done-button {
+    position: absolute;
+    right: 15px;
+    top: 14px;
+}
+
+#folio-container {
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.button {
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 5px;
+    width: 60px;
+    height: 20px;
+    -webkit-user-select: none;
+    cursor: default;
+    -webkit-border-radius:3px;
+}
+
+.grey-button {
+    border:1px solid #555;
+    color: #555;
+}
+
+.grey-button:active {
+    background-color: #555;
+    color: #ffffff;
+}
+
+.blue-button:active, .black-button-small:active {
+    background-color: #00A9DF;
+    color: #ffffff;
+}
+
+.blue-button {
+    border:1px solid #00A9DF;
+    color: #00A9DF;
+}
+
+/* Item renderer used to display an individual folio in the grid. */
+.folio-item-view {
+    margin-top: 0px;
+    padding-left: 14px;
+    font-size: 12px;
+    color: #ffffff;
+    width: 306px;
+    height: 91px;
+    position: relative;
+    border-bottom: 1px solid #CBCBCB;
+    padding-top: 10px;
+}
+
+.folio-item-view img {
+    float: left;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.folio-item-view .text {
+    float: left;
+    display: inline-block;
+    width: 165px;
+}
+
+.folio-item-view .button-container {
+    float: left;
+    display: inline-block;
+}
+
+.folio-item-view #buy-button {
+    margin-bottom: 5px;
+}
+
+.magazine-title {
+    line-height: 120%;
+    color: #000000;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 3px;
+    color: #000000;
+    font-size: 14px;
+}
+
+.folio-number {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 3px;
+    color: #555555;
+    font-size: 12px;
+}
+
+.state {
+    color: #00A9DF;
+    font-size: 12px;
+}
+
+.folio-item-view .state {
+    height: 20px;
+}
+
+/* The background track of the download status. */
+.folio-item-view .progress-track {
+    width: 150px;
+}
+
+.progress-track {
+    width: 320px;
+    height: 3px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+.progress-track .progress-bar {
+    background-color: #00CDFF;
+    height: 3px;
+}
+
+#settings {
+	background-color:rgb(255,255,255);
+	width: 100%;
+	margin-top: 54px;
+    border-top: 1px solid #D3D3D3;
+}
+
+.settings-row {
+	height: 32px;
+	padding: 17px 10px 0px 30px;
+	font-size: 16px;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+#settings .flip-switch {
+	float: right;
+	position: relative;
+	top: -5px;
+}
+
+#archive-button {
+	margin-bottom: 8px;
+}
+
+#flip-switch-grey-background, #flip-switch-green-border {
+    height: 26px;
+    width: 45px;
+}
+
+/* Horizontal switch with on/off states. */
+.flip-switch {
+    overflow: hidden;
+    height: 28px;
+    width: 47px;
+}
+
+#flip-switch-grey-background {
+    border-radius: 13px;
+    border: 1px solid #DFDFDF;
+    position: absolute;
+}
+
+#flip-switch-green-border {
+    border-radius: 13px;
+    border: 1px solid #42D368;
+    position: absolute;
+}
+
+#flip-switch-green-background {
+    background-color: #42D368;
+    position: absolute;
+    top: 1px;
+    border-bottom-left-radius: 13px;
+    border-top-left-radius: 13px;
+    height: 26px;
+}
+
+#flip-switch-thumb {
+    border-radius: 12px;
+    width: 24px;
+    height: 24px;
+    background-color: #ffffff;
+    border: 1px solid #DFDFDF;
+    position: absolute;
+    box-shadow: 1px 3px 4px rgba(0,0,0,.1);
+    top: 1px;
+    left: 1px;
+}
+
+.modal-background {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .3);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 9;
+	-webkit-transition: opacity .2s;
+	opacity: 0;
+}
+
+.button-sheet {
+	background-color: rgba(0,0,0,.5);
+	width:300px;
+	padding: 5px 10px 5px 10px;
+	z-index: 10;
+	position: absolute;
+	-webkit-transition: -webkit-transform .3s;
+	-webkit-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+.button-sheet .title {
+	font-size: 14px;
+	color: #ffffff;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.button-sheet-button {
+	background-color: #ffffff;
+	height:28px;
+	text-align: center;
+	font-size: 16px;
+	padding-top: 10px;
+    margin-bottom: 1px;
+}
+
+.button-sheet-button:nth-last-child(2) {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.button-sheet-button:nth-of-type(2) {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.button-sheet-grey-button:active {
+    background-image:-webkit-linear-gradient(-90deg,rgb(188,190,193) 0%,rgb(185,187,189) 46%,rgb(207,208,210) 48%,rgb(238,239,239) 100%);
+}
+
+.button-sheet-cancel-button {
+	font-weight: bold;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+/* The slideup login view. */
+.login {
+	width: 320px;
+	position: absolute;
+	-webkit-transition: -webkit-transform .5s;
+	-webkit-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+	background-color: #f8f8f8;
+    padding
+}
+
+.login #submit {
+    font-size: 16px;
+}
+
+.login #forgot-password, .login #create-account {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.login .header {
+    border-bottom-style: none;
+}
+
+.login form {
+	padding: 10px 15px 0px 15px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	-webkit-appearance: none;
+	background-color: white;
+	border: 1px solid #BBBBBB;
+	color: black;
+	font-size: 14px;
+	outline-color: black;
+	outline-style: none;
+	outline-width: 0px;
+	padding: 0px 4px 4px 4px;
+	width: 100%;
+	height: 30px;
+	-webkit-appearance: none;
+	margin: 0px 0px 10px 0px;
+	font-family: Helvetica Neue;
+    border-radius: 0px;
+}
+
+.login .header {
+	position: static;
+}
+
+.login .error {
+	color: rgb(255,0,0);
+	font-size: 13px;
+	position: relative;
+	margin-top: 10px;
+	padding-left: 3px;
+	height: 20px;
+}
+
+.login .link {
+    margin: 10px 0px 15px 13px;
+    color: #525252;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    position: relative;
+    top: -5px;
+    display: inline-block;
+    -webkit-user-select: none;
+    clear: left;
+}
+
+.login .link:active {
+    background-color: #bbbbbb;
+}
+
+.form-button {
+	background-color:rgb(255,255,255);
+	width:301px;
+	height:28px;
+	border-color:rgb(159,159,159);
+	border-width:1px;
+	border-radius:3%/30%;
+	border-style:solid;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16;
+	color: #000000;
+	padding-top: 10px;
+	margin-top: 10px;
+	-webkit-user-select: none;
+}
+
+.form-button:active {
+    background-image:-webkit-gradient(linear,50% 0%,50% 100%,color-stop(0, rgb(5,140,245)),color-stop(1, rgb(1,95,230)));
+    color: #ffffff;
+}
+
+#row-loader {
+    width: 320px;
+    height: 31px;
+    position: relative;
+    top: -10px;
+}
+
+.iframe-container {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:99999;
+    background-color:#ffffff;
+}
+
+.iframe-header {
+    height: 50px;
+    background-color:#333333;
+    width:100%;
+    position: fixed;
+}
+
+.iframe-container button {
+    height:25px;
+    margin: 12px;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #bfbfbf) );
+    background-color:#ededed;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#777777;
+    font-family:arial;
+    font-size:13px;
+    font-weight:bold;
+    padding:3px 10px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #ffffff;
+}
+
+.iframe-container button:active {
+    -webkit-box-shadow:inset -1px -1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bfbfbf), color-stop(1, #dfdfdf) );
+}
+
+iframe {
+    border:none;
+    width:100%;
+    height:100%;
+    background-color:#ffffff;
+    margin-top:0px;
+}
+
+.external-link-iframe {
+    margin-top: 50px;
+}
+
+/* The styles for the debug textarea. This is commented out in appview. */
+.debug {
+	width: 320px;
+	height: 100px;
+	position: fixed;
+	bottom: 200px;
+	opacity: .5;
+	z-index: 9999;
+}
